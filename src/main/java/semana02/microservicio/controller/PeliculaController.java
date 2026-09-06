@@ -1,9 +1,12 @@
-package semana02.microservicio;
+package semana02.microservicio.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import semana02.microservicio.model.Pelicula;
+
 import org.springframework.http.HttpStatus;
 import java.util.Map;
 import java.util.Optional;

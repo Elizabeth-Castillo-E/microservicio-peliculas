@@ -1,4 +1,4 @@
-package semana02.microservicio;
+package semana02.microservicio.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
