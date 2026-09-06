@@ -1,43 +1,49 @@
 package semana02.microservicio.model;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 
+//import com.fasterxml.jackson.annotation.JsonProperty;
+
+@Entity
+@Table(name = "peliculas")
 public class Pelicula {
 
-    private int id;
+     public Pelicula(){
+            
+    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column (name = "id")
+    private Long id;
+
+    @Column (name = "titulo")
     private String titulo;
 
-    @JsonProperty("anio")
+   @Column (name = "anio")
     private int anio;
 
+    @Column (name = "director")
     private String director;
 
-    @JsonProperty("genero")
+    @Column (name = "genero")
     private String genero;
 
+    @Column (name = "sinopsis")
     private String sinopsis;
+
+    @Column (name = "valoracion")
     private String valoracion;
 
-    public Pelicula(
-            int id,
-            String titulo,
-            int anio,
-            String director,
-            String genero,
-            String sinopsis,
-            String valoracion) {
-                this.id = id;
-                this.titulo = titulo;
-                this.anio = anio;
-                this.director = director;
-                this.genero = genero;
-                this.sinopsis = sinopsis;
-                this.valoracion = valoracion;
-    }
+    
 
    
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -65,31 +71,5 @@ public class Pelicula {
         return sinopsis;
     }
    
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-
-    }
-    public void setAnio(int anio) {
-        this.anio = anio;   
-    }
-    
-    public void setDirector(String director) {
-        this.director = director;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
-    } 
-    
-    public void setSinopsis(String sinopsis) {
-        this.sinopsis = sinopsis;
-    }
-    
-    public void setValoracion(String valoracion) {
-        this.valoracion = valoracion;
-    }
+   
 }

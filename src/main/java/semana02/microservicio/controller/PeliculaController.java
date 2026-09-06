@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import semana02.microservicio.model.Pelicula;
+import semana02.microservicio.service.PeliculaService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import java.util.Map;
 import java.util.Optional;
@@ -14,10 +16,10 @@ import java.util.Optional;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping ("/peliculas")
 public class PeliculaController {
 
-    private final List<Pelicula> peliculas = List.of(
+    /*private final List<Pelicula> peliculas = List.of(
     new Pelicula(
         1,
         "Juego de gemelas",
@@ -100,20 +102,21 @@ public class PeliculaController {
         "Un adolescente viaja accidentalmente al pasado en una maquina del tiempo.",
         "8.5/10"
     )
-);
+);*/
+
+    @Autowired 
+    private PeliculaService peliculaService;
     
-    @GetMapping({"/peliculas", "/peliculas"})
+    @GetMapping
     public List<Pelicula> obtenerPeliculas() {
-        return peliculas;
+        return peliculaService.getAllPeliculas();
     }
 
     // Devuelve una pelicula segun su ID.
-    @GetMapping("/peliculas/{id}")
-public ResponseEntity<?> obtenerPeliculaPorId(@PathVariable int id) {
+    @GetMapping("/{id}")
+public ResponseEntity<?> obtenerPeliculaPorId(@PathVariable Long id) {
 
-    Optional<Pelicula> peliculaEncontrada = peliculas.stream()
-            .filter(pelicula -> pelicula.getId() == id)
-            .findFirst();
+    Optional<Pelicula> peliculaEncontrada = peliculaService.getPeliculaById(id);
 
     if (peliculaEncontrada.isPresent()) {
         return ResponseEntity.ok(peliculaEncontrada.get());
