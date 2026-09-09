@@ -1,5 +1,6 @@
 package semana02.microservicio.controller;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,11 @@ import java.util.Map;
 import java.util.Optional;
 
 import java.util.List;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PutMapping;
+
+
 
 @RestController
 @RequestMapping ("/peliculas")
@@ -43,5 +49,20 @@ public ResponseEntity<?> obtenerPeliculaPorId(@PathVariable Long id) {
                     "mensaje", "lo siento, su pelicula no fue encontrada, trabajaremos para mejorar nuestro servicio",
                     "id", id
             ));
+}
+@PostMapping
+
+public Pelicula creaPelicula(@RequestBody Pelicula pelicula) {
+    return peliculaService.savePelicula(pelicula);
+
+}
+
+   @PutMapping("/{id}")
+public Pelicula actualizaPelicula(@PathVariable Long id, @RequestBody Pelicula pelicula) {
+    return peliculaService.updatePelicula(id, pelicula);
+}
+  @DeleteMapping("/{id}")
+public void eliminaPelicula(@PathVariable Long id) {
+    peliculaService.deletePelicula(id);
 }
 }

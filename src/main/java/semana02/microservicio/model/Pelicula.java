@@ -71,5 +71,27 @@ public class Pelicula {
         return sinopsis;
     }
    
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+    public void setAnio(int anio) {
+        this.anio = anio;
+    }
+    public void setDirector(String director) {
+        this.director = director;
+    }
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+    public void setSinopsis(String sinopsis) {
+        this.sinopsis = sinopsis;
+    }
+    public void setValoracion(String valoracion) {
+        this.valoracion = valoracion;
+    }
+    
    
 }
